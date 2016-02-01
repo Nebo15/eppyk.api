@@ -1,0 +1,37 @@
+{
+    "name": "Nebo15/eppyk.backend",
+    "description": "Backend Eppyk",
+    "keywords": [],
+    "license": "",
+    "type": "project",
+    "require": {
+        "php": ">=5.5.9",
+        "laravel/lumen-framework": "5.1.*",
+        "vlucas/phpdotenv": "~1.0",
+        "jenssegers/mongodb": "^2.2",
+        "filp/whoops": "^1.1",
+        "flow/jsonpath": "^0.3.1",
+        "egiw/lumen-twig": "dev-master"
+    },
+    "require-dev": {
+        "codeception/codeception": "*",
+        "fzaninotto/faker": "~1.0",
+        "squizlabs/php_codesniffer": "2.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "classmap": [
+            "database/"
+        ]
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist"
+    }
+}
