@@ -109,5 +109,5 @@ cd /www/mbill.web/
 COMPOSER=$(which composer)
 if [ -f ${COMPOSER} ]
 then
-    sudo -Hu www-data php -d memory_limit=-1 ${COMPOSER} --prefer-source install
+    sudo -Hu www-data php -d memory_limit=-1 $(which composer) --prefer-source install
 fi

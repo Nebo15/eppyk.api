@@ -14,7 +14,8 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        // $this->call('UserTableSeeder');
+        $this->call('Locales');
+        //$this->call('Illuminate\Database\Seeder\Locales');
 
         Model::reguard();
     }

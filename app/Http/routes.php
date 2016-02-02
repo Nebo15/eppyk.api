@@ -27,6 +27,9 @@ $app->group(
     ],
     function ($app) {
         $app->get('/', ['uses' => 'IndexController@index']);
+
+
+
         $app->get('/{template}.html', ['uses' => 'IndexController@index']);
     }
 );
