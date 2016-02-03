@@ -34,7 +34,7 @@ $virtualbox_script_app = <<SCRIPT
 #!/bin/bash
 set -o nounset -o errexit -o pipefail -o errtrace
 trap 'error "${BASH_SOURCE}" "${LINENO}"' ERR
-TIMEZONE="Europe/Kiev"
+TIMEZONE="UTC"
 LOCALE_LANGUAGE="en_US"
 LOCALE_CODESET="en_US.UTF-8"
 sudo locale-gen ${LOCALE_LANGUAGE} ${LOCALE_CODESET}

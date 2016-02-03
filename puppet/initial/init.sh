@@ -84,7 +84,7 @@ if [ "$role" != "local" ]
 then
     for project_name in ${projects[@]}; do
         project_key_file_name="id_rsa_${project_name}_${ip}"
-        project_key_name="${project}_${ip}"
+        project_key_name="${project_name}_${ip}"
         sudo -u www-data ssh-keygen -t rsa -b 4096 -N "" -f /var/www/.ssh/${project_key_file_name} -C "${project_key_name}"
         project_www_data_key=$(</var/www/.ssh/${project_key_file_name}.pub)
         add_deploy_key ${github_token} ${project_key_name} ${project_name} "${project_www_data_key}"
@@ -99,7 +99,7 @@ then
     then
         sudo openssl dhparam -out /etc/ssl/dhparam.pem 4096
     fi;
-    sudo FACTER_server_tags="role:${role}" puppet apply --modulepath /www/puppet/modules /www/puppet/initial/manifests/init.pp
+    sudo puppet apply --modulepath /www/nebo15.rome/puppet/modules /www/nebo15.rome/puppet/initial/manifests/init.pp
 else
     sudo FACTER_server_tags="role:${role}" puppet apply --modulepath /www/eppyk.api/puppet/modules /www/eppyk.api/puppet/initial/manifests/init.pp
 fi;
@@ -111,3 +111,14 @@ if [ -f ${COMPOSER} ]
 then
     sudo -Hu www-data php -d memory_limit=-1 $(which composer) --prefer-source install
 fi
+
+
+db.createUser({user:"root",pwd:"secret", roles:[{role:"root",db:"admin"}]})
+db.grantRolesToUser("root",[{ role: "readWrite", db: "admin" }])
+db.createUser(
+    {
+      user: "superuser",
+      pwd: "12345678",
+      roles: [ "root" ]
+    }
+)

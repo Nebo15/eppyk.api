@@ -42,7 +42,7 @@ class Locale extends Base
     {
         $answer = ($data instanceof Answer) ? $data : new Answer($data);
         $this->validate($answer->toArray(), $answer->getValidationRules());
-        $this->answers()->associate($answer);
+        $this->setAnswer($answer);
 
         return $this;
     }
@@ -60,6 +60,7 @@ class Locale extends Base
     public function setAnswer($data)
     {
         $answer = ($data instanceof Answer) ? $data : new Answer($data);
+        $answer->updateTimestamps();
         $this->answers()->associate($answer);
         return $answer;
     }
