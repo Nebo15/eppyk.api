@@ -111,14 +111,3 @@ if [ -f ${COMPOSER} ]
 then
     sudo -Hu www-data php -d memory_limit=-1 $(which composer) --prefer-source install
 fi
-
-
-db.createUser({user:"root",pwd:"secret", roles:[{role:"root",db:"admin"}]})
-db.grantRolesToUser("root",[{ role: "readWrite", db: "admin" }])
-db.createUser(
-    {
-      user: "superuser",
-      pwd: "12345678",
-      roles: [ "root" ]
-    }
-)
