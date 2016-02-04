@@ -28,7 +28,11 @@ $app->group(
     function ($app) {
         $app->get('/', ['uses' => 'IndexController@index']);
 
-
+        $app->get('/locales', ['uses' => 'LocalesController@index']);
+        $app->get('/locales/create', ['uses' => 'LocalesController@create']);
+        $app->post('/locales/edit', ['uses' => 'LocalesController@edit']);
+        $app->get('/locales/update/{id}', ['uses' => 'LocalesController@update']);
+        $app->get('/locales/delete/{id}', ['uses' => 'LocalesController@delete']);
 
         $app->get('/{template}.html', ['uses' => 'IndexController@index']);
     }
