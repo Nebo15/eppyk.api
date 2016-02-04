@@ -35,8 +35,6 @@ class LocalesController extends BaseController
         if (!array_key_exists('default', $params)) {
             $params['default'] = 0;
         }
-        $params['active'] = intval((bool)$params['active']);
-        $params['default'] = intval((bool)$params['default']);
         $model->fill($params)->save();
         return redirect('/admin/locales', 301);
     }

@@ -76,7 +76,7 @@ $app->middleware([
 */
 
 //$app->register(App\Providers\AppServiceProvider::class);
-//$app->register(App\Providers\EventServiceProvider::class);
+$app->register(App\Providers\ObserverServiceProvider::class);
 $app->register(LumenTwig\TwigServiceProvider::class);
 
 /*

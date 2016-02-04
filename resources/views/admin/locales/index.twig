@@ -24,8 +24,8 @@
                             <td>{{ locale.title }}</td>
                             <td>{{ locale.code }}</td>
                             <td>{{ locale.answers.count() }}</td>
-                            <td>{{ locale.active }}</td>
-                            <td>{{ locale.default }}</td>
+                            <td>{{ locale.active|number_format }}</td>
+                            <td>{{ locale.default|number_format }}</td>
                             <td>
                                 <a href="/admin/locales/delete/{{ locale.id }}" onclick="if(!confirm('Are you sure?')){return false;}"><span class="glyphicon glyphicon-remove"></span></a>
                                 <a href="/admin/locales/update/{{ locale.id }}"><span class="glyphicon glyphicon-pencil"></span></a>
