@@ -2,6 +2,7 @@
 namespace App\Models;
 
 use App\Exceptions\AnswerNotFoundException;
+use Carbon\Carbon;
 
 /**
  * Class Locale
@@ -33,34 +34,56 @@ class Locale extends Base
         'answers' => []
     ];
 
-    public function toApiView($with_answers = true, $answers_amount = null)
+    public function toApiView($with_answers = true, $answers_page = null, $answers_size = null)
     {
         $data = [
             'id' => $this->getId(),
             'title' => $this->title,
             'code' => $this->code,
         ];
-        if ($with_answers) {
-            $data['answers'] = $this->answersToApiView($answers_amount);
+        if ($with_answers or 'false' != $with_answers) {
+            $data['answers'] = $this->answersToApiView(null, $answers_page, $answers_size);
         }
 
         return $data;
     }
 
-    public function answersToApiView($answers_amount = null)
+    /**
+     * @param int $page
+     * @param int $size
+     * @param null $updated_after
+     * @param null $updated_before
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getAnswersPaginated($page = 1, $size = 30, $updated_after = null, $updated_before = null)
+    {
+        $queryBuilder = $this->answers()->filter(function ($item) use ($updated_after, $updated_before) {
+            $bool = true;
+            if ($updated_after) {
+                $bool = data_get($item, 'updated_at')->gt(new Carbon($updated_after));
+            }
+            if ($updated_before) {
+                $bool = data_get($item, 'updated_at')->lte(new Carbon($updated_before));
+            }
+
+            return $bool;
+        });
+
+        return $this->answersToApiView($queryBuilder->where('active', true)->forPage($page, $size));
+    }
+
+    public function answersToApiView($answers = null, $page = null, $limit = null)
     {
         $return = [];
-        /** @var Answer $answer */
-        $i = 0;
-        foreach ($this->answers()->get() as $answer) {
-            if ($answers_amount and $i == $answers_amount) {
-                break;
+
+        $answers = $answers ?: $this->answers()->where('active', true)->forPage($page, $limit);
+        if ($answers) {
+            foreach ($answers as $answer) {
+                $return[] = [
+                    'id' => $answer->getId(),
+                    'text' => $answer->text,
+                ];
             }
-            $i++;
-            $return[] = [
-                'id' => $answer->getId(),
-                'text' => $answer->text,
-            ];
         }
 
         return $return;

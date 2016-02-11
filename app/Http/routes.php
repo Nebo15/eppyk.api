@@ -18,6 +18,7 @@ $app->group(
     function ($app) {
         $app->get('/', ['uses' => 'IndexController@welcome']);
         $app->get('/locales', ['uses' => 'IndexController@locales']);
+        $app->get('/locales/{locale}/answers', ['uses' => 'IndexController@answers']);
     }
 );
 
