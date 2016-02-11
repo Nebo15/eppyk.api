@@ -51,11 +51,17 @@ class IndexController extends BaseController
             'updated_before' => 'sometimes|required|ISODate',
         ]);
 
+        $page = $request->get('page') > 0 ? $request->get('page') : 1;
+        $pagination = [];
+        if ($size = $request->get('size')) {
+            $pagination = ['page' => intval($page), 'size' => intval($size)];
+        }
+
         return $response->json(Locale::findByLocale($locale)->getAnswersPaginated(
-            $request->get('page') > 0 ? $request->get('page') : 1,
-            $request->get('size'),
+            $page,
+            $size,
             $request->get('updated_after'),
             $request->get('updated_before')
-        ));
+        ), 200, [], $pagination);
     }
 }

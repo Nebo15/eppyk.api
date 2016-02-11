@@ -73,17 +73,18 @@ $ curl https://eppyk.com/api/v1/locales?with_answers=true&answers_size=10&answer
 }
 ```
 
-### Get questions by locale
+### Get answers by locale
  
 #### api/v1/locales/{LOCALE}/answers
 
 Params:
 
 * `page` - optional, default 1
-* `size` - optional, size of the answers on page, default 30
+* `size` - optional, size of the answers on page, default infinity
 * `updated_before` - optional, ISO date format. Answer update time LESS than param.
 * `updated_after` - optional, ISO date format. Answer update time MORE than param.
 
+If you pass a **size** param, response will contain **pagination** data with current size and page 
 
 ```shell
 $ curl https://eppyk.com/api/v1/locales/RU/answers/?page=1&size=10
@@ -104,5 +105,9 @@ $ curl https://eppyk.com/api/v1/locales/RU/answers/?page=1&size=10
             "id": "56bc7dbb4db07f19540041a9",
             "text": "У тебя получится"
         }
-    ]
+    ],
+    "pagination": {
+        "page": 1,
+        "size": 10
+    }
 }

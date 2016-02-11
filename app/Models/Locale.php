@@ -68,8 +68,9 @@ class Locale extends Base
 
             return $bool;
         });
+        $queryBuilder = $queryBuilder->where('active', true);
 
-        return $this->answersToApiView($queryBuilder->where('active', true)->forPage($page, $size));
+        return $this->answersToApiView($size ? $queryBuilder->forPage($page, $size) : $queryBuilder);
     }
 
     public function answersToApiView($answers = null, $page = null, $limit = null)
