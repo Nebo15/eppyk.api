@@ -45,7 +45,7 @@ $ curl https://eppyk.com/api/v1/locales?with_answers=true&answers_amount=10
     },
     "data": [
         {
-            i"d: "56bc6a944db07f19540041a8",
+            "id": "56bc6a944db07f19540041a8",
             "title": "Russian",
             "code": "RU",
             "answers": [
