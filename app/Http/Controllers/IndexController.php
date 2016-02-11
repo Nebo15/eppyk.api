@@ -14,12 +14,12 @@ class IndexController extends BaseController
         return $response->json('It works!');
     }
 
-    public function locales(Response $response)
+    public function locales(Request $request, Response $response)
     {
         $return = [];
         /** @var Locale $locale */
         foreach (Locale::all() as $locale) {
-            $return[] = $locale->toApiView();
+            $return[] = $locale->toApiView($request->get('with_answers'), $request->get('answers_amount'));
         }
 
         return $response->json($return);

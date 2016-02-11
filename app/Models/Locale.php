@@ -33,21 +33,30 @@ class Locale extends Base
         'answers' => []
     ];
 
-    public function toApiView()
+    public function toApiView($with_answers = true, $answers_amount = null)
     {
-        return [
+        $data = [
             'id' => $this->getId(),
             'title' => $this->title,
             'code' => $this->code,
-            'answers' => $this->answersToApiView(),
         ];
+        if ($with_answers) {
+            $data['answers'] = $this->answersToApiView($answers_amount);
+        }
+
+        return $data;
     }
 
-    public function answersToApiView()
+    public function answersToApiView($answers_amount = null)
     {
         $return = [];
         /** @var Answer $answer */
+        $i = 0;
         foreach ($this->answers()->get() as $answer) {
+            if ($answers_amount and $i == $answers_amount) {
+                break;
+            }
+            $i++;
             $return[] = [
                 'id' => $answer->getId(),
                 'text' => $answer->text,
