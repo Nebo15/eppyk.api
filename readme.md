@@ -4,6 +4,8 @@
 
 ### Get all locales
 
+#### api/v1/locales
+
 Params:
 
 * `locale` - optional, filter by locale code
@@ -71,7 +73,9 @@ $ curl https://eppyk.com/api/v1/locales?with_answers=true&answers_size=10&answer
 }
 ```
 
-### Get questions by locale 
+### Get questions by locale
+ 
+#### api/v1/locales/{LOCALE}/answers
 
 Params:
 
