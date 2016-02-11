@@ -2,31 +2,36 @@
 
 namespace App\Http\AdminControllers;
 
-use App\Http\Services\Response;
 use App\Models\Locale;
 use Illuminate\Http\Request;
+use App\Http\Services\Response;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 class LocalesController extends BaseController
 {
-    public function index(Response $response)
+    public function index(Request $request, Response $response)
     {
-        return $response->view('locales/index.twig', ['locales' => Locale::all()]);
+        return $response->view(
+            'locales/index.twig',
+            ['locales' => Locale::all(), 'no_default' => $request->has('no_default')]
+        );
     }
 
     public function delete($id)
     {
         Locale::findById($id)->delete();
+
         return redirect('/admin/locales');
     }
 
-    public function create(Locale $model)
+    public function create(Request $request, Locale $model)
     {
-        return view('locales/form.twig', ['model' => $model]);
+        return view('locales/form.twig', ['model' => $model, 'locale_code' => $request->get('locale')]);
     }
 
     public function edit(Request $request)
     {
+        /** @var Locale $model */
         $model = Locale::findOrNew($request->get('id'));
         $params = $request->request->all();
         if (!array_key_exists('active', $params)) {
@@ -36,6 +41,7 @@ class LocalesController extends BaseController
             $params['default'] = 0;
         }
         $model->fill($params)->save();
+
         return redirect('/admin/locales', 301);
     }
 

@@ -17,6 +17,7 @@ $app->group(
     ],
     function ($app) {
         $app->get('/', ['uses' => 'IndexController@welcome']);
+
     }
 );
 
@@ -30,10 +31,16 @@ $app->group(
 
         $app->get('/locales', ['uses' => 'LocalesController@index']);
         $app->get('/locales/create', ['uses' => 'LocalesController@create']);
-        $app->post('/locales/edit', ['uses' => 'LocalesController@edit']);
         $app->get('/locales/update/{id}', ['uses' => 'LocalesController@update']);
         $app->get('/locales/delete/{id}', ['uses' => 'LocalesController@delete']);
+        $app->post('/locales/edit', ['uses' => 'LocalesController@edit']);
 
-        $app->get('/{template}.html', ['uses' => 'IndexController@index']);
+        $app->get('/answers/{locale}', ['uses' => 'AnswersController@index']);
+        $app->get('/answers/{locale}/create', ['uses' => 'AnswersController@create']);
+        $app->get('/answers/{id}/update', ['uses' => 'AnswersController@update']);
+        $app->get('/answers/{id}/delete', ['uses' => 'AnswersController@delete']);
+        $app->post('/answers/edit', ['uses' => 'AnswersController@edit']);
+
+    //        $app->get('/{template}.html', ['uses' => 'IndexController@index']);
     }
 );

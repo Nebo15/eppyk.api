@@ -12,19 +12,20 @@ class Answer extends Base
 {
     protected $attributes = [
         'text' => '',
+        'active' => true,
     ];
 
-    protected $fillable = ['text'];
-
-    public function getValidationRules()
-    {
-        return [
-            'text' => 'string',
-        ];
-    }
+    protected $fillable = ['text', 'active'];
 
     public function setTextAttribute($text)
     {
         $this->attributes['text'] = strip_tags($text);
+    }
+
+    # mutators
+
+    public function setActiveAttribute($value)
+    {
+        $this->attributes['active'] = boolval($value);
     }
 }

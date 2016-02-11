@@ -38,18 +38,34 @@ class Locale extends Base
         return $this->embedsMany('App\Models\Answer');
     }
 
+    /**
+     * @param $locale
+     * @return Locale
+     */
+    public static function findByLocale($locale)
+    {
+        return self::where(['code' => $locale])->first();
+    }
+
+    /**
+     * @param $id
+     * @return Locale
+     */
+    public static function findByAnswerId($id)
+    {
+        return self::where('answers.' . self::PRIMARY_KEY, $id)->firstOrFail();
+    }
+
     public function addAnswer($data)
     {
-        $answer = ($data instanceof Answer) ? $data : new Answer($data);
-        $this->validate($answer->toArray(), $answer->getValidationRules());
-        $this->setAnswer($answer);
+        $this->setAnswer(($data instanceof Answer) ? $data : new Answer($data));
 
         return $this;
     }
 
     public function getAnswer($id)
     {
-        $answer = $this->answers()->where(self::PRIMARY_KEY, '=', $id)->first();
+        $answer = $this->answers()->where(self::PRIMARY_KEY, $id)->first();
         if (!$answer) {
             throw new AnswerNotFoundException;
         }
@@ -62,6 +78,7 @@ class Locale extends Base
         $answer = ($data instanceof Answer) ? $data : new Answer($data);
         $answer->updateTimestamps();
         $this->answers()->associate($answer);
+
         return $answer;
     }
 
@@ -70,5 +87,17 @@ class Locale extends Base
         $this->answers()->dissociate($this->getAnswer($id));
 
         return $this;
+    }
+
+    # mutators
+
+    public function setActiveAttribute($value)
+    {
+        $this->attributes['active'] = boolval($value);
+    }
+
+    public function setDefaultAttribute($value)
+    {
+        $this->attributes['default'] = boolval($value);
     }
 }
