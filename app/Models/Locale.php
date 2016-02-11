@@ -33,6 +33,30 @@ class Locale extends Base
         'answers' => []
     ];
 
+    public function toApiView()
+    {
+        return [
+            'id' => $this->getId(),
+            'title' => $this->title,
+            'code' => $this->code,
+            'answers' => $this->answersToApiView(),
+        ];
+    }
+
+    public function answersToApiView()
+    {
+        $return = [];
+        /** @var Answer $answer */
+        foreach ($this->answers()->get() as $answer) {
+            $return[] = [
+                'id' => $answer->getId(),
+                'text' => $answer->text,
+            ];
+        }
+
+        return $return;
+    }
+
     public function answers()
     {
         return $this->embedsMany('App\Models\Answer');
