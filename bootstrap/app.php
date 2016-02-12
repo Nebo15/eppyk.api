@@ -25,7 +25,7 @@ $app->withFacades();
 $app->withEloquent();
 
 $app->configure('database');
-
+$app->configure('auth');
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +62,10 @@ $app->singleton(
 $app->middleware([
     App\Http\Middleware\JsonMiddleware::class,
     Illuminate\Session\Middleware\StartSession::class,
+]);
+
+$app->routeMiddleware([
+    'auth.basic' => 'App\Http\Middleware\AuthBasic',
 ]);
 
 /*

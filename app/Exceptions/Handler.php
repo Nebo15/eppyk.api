@@ -76,6 +76,8 @@ class Handler extends ExceptionHandler
         } elseif ($e instanceof HttpException) {
             $http_code = $e->getStatusCode();
             $error_code = $e->getMessage() ?: 'http';
+        } elseif ($e instanceof AdminRequiredException){
+            return response('', 401, ['WWW-Authenticate' => 'Basic realm="Admin only"']);
         }
 
         if ($http_code === 500 and env('APP_DEBUG') === true) {

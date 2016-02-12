@@ -22,10 +22,17 @@ $app->group(
     }
 );
 
+$app->get('/admin/login', function(){
+    return view('login.twig');
+});
+$app->post('/admin/login', ['uses' => 'IndexController@']);
+
+
 $app->group(
     [
         'prefix' => 'admin',
         'namespace' => 'App\Http\AdminControllers',
+        'middleware' => ['auth.basic'],
     ],
     function ($app) {
         $app->get('/', ['uses' => 'IndexController@index']);

@@ -5,10 +5,18 @@ namespace App\Http\AdminControllers;
 use App\Models\Locale;
 use Illuminate\Http\Request;
 use App\Http\Services\Response;
+use App\Exceptions\AdminRequiredException;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 class LocalesController extends BaseController
 {
+    public function __construct(Request $request, Response $response)
+    {
+        if('admin' !== $request->offsetGet('auth_user_role')){
+            throw new AdminRequiredException;
+        }
+    }
+
     public function index(Request $request, Response $response)
     {
         return $response->view(
