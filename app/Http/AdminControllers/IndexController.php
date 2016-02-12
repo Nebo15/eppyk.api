@@ -8,6 +8,7 @@ class IndexController extends BaseController
 {
     public function index($template = '')
     {
-        return view(((!$template) ? 'index' : $template ).'.twig');
+        return redirect('/admin/locales', 301);
+//        return view(((!$template) ? 'index' : $template ).'.twig');
     }
 }
