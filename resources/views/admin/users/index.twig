@@ -2,19 +2,8 @@
 
 {% block main %}
     <div class="row">
-        <div class="col-lg-10">
-
+        <div class="col-lg-12">
             <h1 class="page-header">Users</h1>
-        </div>
-        <div class="col-lg-2">
-            <div class="locale-selector">
-                <label>Locale</label>
-                <select class="form-control" onchange="this.options[this.selectedIndex].value && (window.location = '/admin/users/' + this.options[this.selectedIndex].value);">
-                    {% for locale in locales %}
-                        <option{% if locale.code == default_locale %} selected{% endif %} value="{{ locale.code }}">{{ locale.title }}</option>
-                    {% endfor %}
-                </select>
-            </div>
         </div>
     </div>
     <div class="row">
