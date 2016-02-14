@@ -8,9 +8,18 @@
 namespace App\Models;
 
 use Illuminate\Auth\Authenticatable;
-use Jenssegers\Mongodb\Eloquent\Model;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableInterface;
 
-class User extends Model
+/**
+ * Class User
+ * @package App\Models
+ * @property string $login
+ * @property string $password
+ * @property string $role
+ */
+class User extends Base implements AuthenticatableInterface
 {
     use Authenticatable;
+
+    protected $fillable = ['login', 'role'];
 }

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Locale;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use App\Http\Services\Response;
+use Illuminate\Database\Eloquent\Collection;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 class IndexController extends BaseController
@@ -63,5 +63,15 @@ class IndexController extends BaseController
             $request->get('updated_after'),
             $request->get('updated_before')
         ), 200, [], $pagination);
+    }
+
+    public function login(Request $request, Response $response)
+    {
+        $result = \Auth::attempt([
+            'login' => $request->get('login'),
+            'password' => $request->get('password'),
+        ], $request->get('remember'));
+
+        return redirect($result ? '/admin/answers/default' : '/admin/login', 301);
     }
 }

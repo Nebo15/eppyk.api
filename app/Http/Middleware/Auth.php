@@ -11,7 +11,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Auth\Guard;
 
-class AuthBasic
+class Auth
 {
     protected $auth;
 

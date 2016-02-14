@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "12883b5ba575df4291cd2c7e7b5b695b",
-    "content-hash": "ab4fab5f6bf34e07934c3bc3a8af2561",
+    "hash": "69f226665ab4cb8613c227db52bfce0f",
+    "content-hash": "879cc8b3387b7c2849018b772fe70af5",
     "packages": [
         {
             "name": "danielstjules/stringy",
@@ -1377,16 +1377,16 @@
         },
         {
             "name": "jenssegers/mongodb",
-            "version": "v2.3.2",
+            "version": "v2.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jenssegers/laravel-mongodb.git",
-                "reference": "b0354f28286629e99d3467e9cd069c71de46e2fe"
+                "reference": "6e9b5f4fe5fa5044b7dea0db5576f7c21374c661"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jenssegers/laravel-mongodb/zipball/b0354f28286629e99d3467e9cd069c71de46e2fe",
-                "reference": "b0354f28286629e99d3467e9cd069c71de46e2fe",
+                "url": "https://api.github.com/repos/jenssegers/laravel-mongodb/zipball/6e9b5f4fe5fa5044b7dea0db5576f7c21374c661",
+                "reference": "6e9b5f4fe5fa5044b7dea0db5576f7c21374c661",
                 "shasum": ""
             },
             "require": {
@@ -1432,7 +1432,7 @@
                 "mongo",
                 "mongodb"
             ],
-            "time": "2016-02-06 11:25:52"
+            "time": "2016-02-12 18:42:59"
         },
         {
             "name": "laravel/lumen-framework",
@@ -2581,16 +2581,16 @@
     "packages-dev": [
         {
             "name": "codeception/codeception",
-            "version": "2.1.5",
+            "version": "2.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/Codeception.git",
-                "reference": "4ee562f421fd404139dd7b73ae46d075396a4baf"
+                "reference": "b199941f5e59d1e7fd32d78296c8ab98db873d89"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/4ee562f421fd404139dd7b73ae46d075396a4baf",
-                "reference": "4ee562f421fd404139dd7b73ae46d075396a4baf",
+                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/b199941f5e59d1e7fd32d78296c8ab98db873d89",
+                "reference": "b199941f5e59d1e7fd32d78296c8ab98db873d89",
                 "shasum": ""
             },
             "require": {
@@ -2657,7 +2657,7 @@
                 "functional testing",
                 "unit testing"
             ],
-            "time": "2015-12-20 12:11:42"
+            "time": "2016-02-09 22:27:48"
         },
         {
             "name": "doctrine/instantiator",
@@ -2978,6 +2978,59 @@
                 "uri"
             ],
             "time": "2016-01-23 01:23:02"
+        },
+        {
+            "name": "jmikola/geojson",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jmikola/geojson.git",
+                "reference": "6ec3016cc0215667b7775f6ead7bd0337ad66eee"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jmikola/geojson/zipball/6ec3016cc0215667b7775f6ead7bd0337ad66eee",
+                "reference": "6ec3016cc0215667b7775f6ead7bd0337ad66eee",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~3.7"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "GeoJson\\": "src/"
+                },
+                "classmap": [
+                    "stubs/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeremy Mikola",
+                    "email": "jmikola@gmail.com"
+                }
+            ],
+            "description": "GeoJSON implementation for PHP",
+            "homepage": "https://github.com/jmikola/geojson",
+            "keywords": [
+                "geo",
+                "geojson",
+                "geospatial"
+            ],
+            "time": "2015-09-27 15:35:21"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -3330,16 +3383,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.8.22",
+            "version": "4.8.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "dfb11aa5236376b4fc63853cf746af39fe780e72"
+                "reference": "6e351261f9cd33daf205a131a1ba61c6d33bd483"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/dfb11aa5236376b4fc63853cf746af39fe780e72",
-                "reference": "dfb11aa5236376b4fc63853cf746af39fe780e72",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/6e351261f9cd33daf205a131a1ba61c6d33bd483",
+                "reference": "6e351261f9cd33daf205a131a1ba61c6d33bd483",
                 "shasum": ""
             },
             "require": {
@@ -3398,7 +3451,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2016-02-02 09:01:21"
+            "time": "2016-02-11 14:56:33"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -3877,6 +3930,111 @@
             "time": "2015-06-21 13:59:46"
         },
         {
+            "name": "sokil/php-mongo",
+            "version": "1.14",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sokil/php-mongo.git",
+                "reference": "d482c60272d8573e80b1de9863b04c93664f87be"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sokil/php-mongo/zipball/d482c60272d8573e80b1de9863b04c93664f87be",
+                "reference": "d482c60272d8573e80b1de9863b04c93664f87be",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mongo": ">=0.9.0",
+                "jmikola/geojson": "~1.0",
+                "php": ">=5.3",
+                "psr/log": "~1.0",
+                "symfony/event-dispatcher": "2.*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*",
+                "satooshi/php-coveralls": "0.7.*"
+            },
+            "suggest": {
+                "sokil/php-mongo-bundle": "Symfony Bundle",
+                "sokil/php-mongo-migrator": "Add support of migrations",
+                "sokil/php-mongo-yii": "Yii Framework component"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Sokil\\Mongo\\": "src/"
+                },
+                "classmap": [
+                    "stubs/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dmytro Sokil",
+                    "email": "dmytro.sokil@gmail.com"
+                }
+            ],
+            "description": "PHP Object Document Mapper for MongoDB",
+            "homepage": "https://github.com/sokil/php-mongo",
+            "keywords": [
+                "mongodb",
+                "odm"
+            ],
+            "time": "2016-01-30 09:31:44"
+        },
+        {
+            "name": "sokil/php-mongo-migrator",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sokil/php-mongo-migrator.git",
+                "reference": "944032f27bdef4feb6eae65f1ad553fb09afd1ad"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sokil/php-mongo-migrator/zipball/944032f27bdef4feb6eae65f1ad553fb09afd1ad",
+                "reference": "944032f27bdef4feb6eae65f1ad553fb09afd1ad",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mongo": ">=0.9.0",
+                "php": ">=5.3",
+                "sokil/php-mongo": "1.*",
+                "symfony/console": "2.*",
+                "symfony/event-dispatcher": "2.*",
+                "symfony/yaml": "2.*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*",
+                "satooshi/php-coveralls": "0.7.*"
+            },
+            "bin": [
+                "bin/mongo-migrator"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Sokil\\Mongo\\Migrator\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "sokil",
+                    "email": "dmytro.sokil@gmail.com"
+                }
+            ],
+            "description": "Migrations for mongo",
+            "time": "2016-01-19 06:53:25"
+        },
+        {
             "name": "squizlabs/php_codesniffer",
             "version": "2.5.1",
             "source": {
@@ -4065,25 +4223,25 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.0.2",
+            "version": "v2.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "3cf0709d7fe936e97bee9e954382e449003f1d9a"
+                "reference": "34c8a4b51e751e7ea869b8262f883d008a2b81b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/3cf0709d7fe936e97bee9e954382e449003f1d9a",
-                "reference": "3cf0709d7fe936e97bee9e954382e449003f1d9a",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/34c8a4b51e751e7ea869b8262f883d008a2b81b8",
+                "reference": "34c8a4b51e751e7ea869b8262f883d008a2b81b8",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.9"
+                "php": ">=5.3.9"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "2.8-dev"
                 }
             },
             "autoload": {
@@ -4110,13 +4268,14 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2016-02-02 13:44:19"
+            "time": "2016-01-13 10:28:07"
         }
     ],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "egiw/lumen-twig": 20
+        "egiw/lumen-twig": 20,
+        "sokil/php-mongo-migrator": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

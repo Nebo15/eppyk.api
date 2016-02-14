@@ -1,0 +1,56 @@
+{% extends "templates/main.twig" %}
+
+{% block main %}
+    <div class="row">
+        <div class="col-lg-10">
+
+            <h1 class="page-header">Users</h1>
+        </div>
+        <div class="col-lg-2">
+            <div class="locale-selector">
+                <label>Locale</label>
+                <select class="form-control" onchange="this.options[this.selectedIndex].value && (window.location = '/admin/users/' + this.options[this.selectedIndex].value);">
+                    {% for locale in locales %}
+                        <option{% if locale.code == default_locale %} selected{% endif %} value="{{ locale.code }}">{{ locale.title }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>User</th>
+                        <th>Role</th>
+                        <th>Manage</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for user in users %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ user.login }}</td>
+                            <td>{{ user.role }}</td>
+                            <td>
+                                <a href="/admin/users/{{ user.id }}/update"><span
+                                            class="glyphicon glyphicon-pencil"></span></a>
+                                <a href="/admin/users/{{ user.id }}/delete"
+                                   onclick="if(!confirm('Are you sure?')){return false;}"><span
+                                            class="glyphicon glyphicon-remove"></span></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    <tr>
+                        <td colspan="3"></td>
+                        <td><a href="/admin/users/create" class="btn btn-sm btn-primary">Add user</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

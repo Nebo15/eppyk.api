@@ -65,7 +65,7 @@ $app->middleware([
 ]);
 
 $app->routeMiddleware([
-    'auth.basic' => 'App\Http\Middleware\AuthBasic',
+    'auth' => 'App\Http\Middleware\Auth',
 ]);
 
 /*
@@ -81,6 +81,7 @@ $app->routeMiddleware([
 
 $app->register(App\Providers\AppServiceProvider::class);
 $app->register(App\Providers\ObserverServiceProvider::class);
+$app->register(App\Providers\AuthServiceProvider::class);
 $app->register(LumenTwig\TwigServiceProvider::class);
 
 /*

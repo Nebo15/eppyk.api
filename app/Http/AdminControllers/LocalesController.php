@@ -6,14 +6,15 @@ use App\Models\Locale;
 use Illuminate\Http\Request;
 use App\Http\Services\Response;
 use App\Exceptions\AdminRequiredException;
+use Illuminate\Support\Facades\Gate;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 class LocalesController extends BaseController
 {
-    public function __construct(Request $request, Response $response)
+    public function __construct()
     {
-        if('admin' !== $request->offsetGet('auth_user_role')){
-            throw new AdminRequiredException;
+        if (Gate::denies('create-locale')) {
+            abort(403, 'only for admin account');
         }
     }
 

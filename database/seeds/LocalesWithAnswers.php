@@ -11,9 +11,10 @@ class LocalesWithAnswers extends Seeder
      */
     public function run()
     {
+        \App\Models\Locale::truncate();
         $faker = Faker\Factory::create();
         $data = [];
-        for ($i = 0; $i<5; $i++) {
+        for ($i = 0; $i < 5; $i++) {
             $data[] = [
                 'title' => $faker->country,
                 'code' => $faker->locale,
@@ -24,7 +25,7 @@ class LocalesWithAnswers extends Seeder
         foreach ($data as $locale) {
             $localeModel = \App\Models\Locale::create($locale)->save();
             for ($t = 0; $t < 10; $t++) {
-                $localeModel->addAnswer(['text'=>$faker->text('100')])->save();
+                $localeModel->addAnswer(['text' => $faker->text('100')])->save();
             }
         }
     }

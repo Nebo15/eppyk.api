@@ -22,17 +22,17 @@ $app->group(
     }
 );
 
-$app->get('/admin/login', function(){
-    return view('login.twig');
+$app->get('/admin/login', function () {
+    return Auth::guest() ? view('login.twig') : redirect('/admin/answers/default', 301);
 });
-$app->post('/admin/login', ['uses' => 'IndexController@']);
+$app->post('/admin/login', ['uses' => 'IndexController@login']);
 
 
 $app->group(
     [
         'prefix' => 'admin',
         'namespace' => 'App\Http\AdminControllers',
-        'middleware' => ['auth.basic'],
+        'middleware' => ['auth'],
     ],
     function ($app) {
         $app->get('/', ['uses' => 'IndexController@index']);
@@ -49,6 +49,10 @@ $app->group(
         $app->get('/answers/{id}/delete', ['uses' => 'AnswersController@delete']);
         $app->post('/answers/edit', ['uses' => 'AnswersController@edit']);
 
-    //        $app->get('/{template}.html', ['uses' => 'IndexController@index']);
+        $app->get('/users', ['uses' => 'UsersController@index']);
+        $app->get('/users/create', ['uses' => 'UsersController@create']);
+        $app->get('/users/{id}/update', ['uses' => 'UsersController@update']);
+        $app->get('/users/{id}/delete', ['uses' => 'UsersController@delete']);
+        $app->post('/users/edit', ['uses' => 'UsersController@edit']);
     }
 );
