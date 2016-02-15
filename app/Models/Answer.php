@@ -12,10 +12,11 @@ class Answer extends Base
 {
     protected $attributes = [
         'text' => '',
+        'author' => '',
         'active' => true,
     ];
 
-    protected $fillable = ['text', 'active'];
+    protected $fillable = ['text', 'author', 'active'];
 
     public function setTextAttribute($text)
     {
