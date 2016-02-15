@@ -41,7 +41,7 @@ class Locale extends Base
             'title' => $this->title,
             'code' => $this->code,
         ];
-        if ($with_answers or 'false' != $with_answers) {
+        if ($with_answers and 'false' != $with_answers) {
             $data['answers'] = $this->answersToApiView(null, $answers_page, $answers_size);
         }
 
@@ -101,7 +101,7 @@ class Locale extends Base
      */
     public static function findByLocale($locale)
     {
-        return self::where(['code' => $locale])->first();
+        return self::where(['code' => $locale])->firstOrFail();
     }
 
     /**
