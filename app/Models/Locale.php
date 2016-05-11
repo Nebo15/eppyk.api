@@ -8,6 +8,7 @@ use Carbon\Carbon;
  * Class Locale
  * @package App\Models
  * @property string $title
+ * @property string $description
  * @property string $code
  * @property bool $active
  * @property bool $default
@@ -21,6 +22,7 @@ class Locale extends Base
 
     protected $fillable = [
         'title',
+        'description',
         'code',
         'active',
         'default'
@@ -28,6 +30,7 @@ class Locale extends Base
 
     protected $attributes = [
         'title' => '',
+        'description' => '',
         'code' => '',
         'active' => 1,
         'default' => 0,
@@ -39,6 +42,7 @@ class Locale extends Base
         $data = [
             'id' => $this->getId(),
             'title' => $this->title,
+            'description' => $this->description,
             'code' => $this->code,
         ];
         if ($with_answers and 'false' != $with_answers) {
@@ -83,6 +87,7 @@ class Locale extends Base
                 $return[] = [
                     'id' => $answer->getId(),
                     'text' => $answer->text,
+                    'author' => $answer->author
                 ];
             }
         }
