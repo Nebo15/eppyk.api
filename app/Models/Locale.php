@@ -42,7 +42,7 @@ class Locale extends Base
         $data = [
             'id' => $this->getId(),
             'title' => $this->title,
-            'description' => $this->description,
+            'description' => $this->description ?: "",
             'code' => $this->code,
         ];
         if ($with_answers and 'false' != $with_answers) {
@@ -87,7 +87,7 @@ class Locale extends Base
                 $return[] = [
                     'id' => $answer->getId(),
                     'text' => $answer->text,
-                    'author' => $answer->author
+                    'author' => $answer->author ?: ""
                 ];
             }
         }
