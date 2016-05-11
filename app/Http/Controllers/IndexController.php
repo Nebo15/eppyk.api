@@ -62,7 +62,7 @@ class IndexController extends BaseController
             $size,
             $request->get('updated_after'),
             $request->get('updated_before')
-        ), 200, ['append' => env('META_APPEND')], $pagination);
+        ), 200, ['append' => intval(env('META_APPEND'))], $pagination);
     }
 
     public function login(Request $request, Response $response)
