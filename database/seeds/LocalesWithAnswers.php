@@ -18,14 +18,25 @@ class LocalesWithAnswers extends Seeder
             $data[] = [
                 'title' => $faker->country,
                 'code' => $faker->locale,
-                'active' => 1,
+                'active' => 0,
                 'default' => 0,
             ];
         }
+
+        $data[] = [
+            'title' => 'English',
+            'code' => 'en_US',
+            'description' => 'Answers from American Movies',
+            'active' => 1,
+            'default' => 1,
+        ];
+
         foreach ($data as $locale) {
             $localeModel = \App\Models\Locale::create($locale)->save();
-            for ($t = 0; $t < 10; $t++) {
-                $localeModel->addAnswer(['text' => $faker->text('100')])->save();
+            if ($localeModel->code !== 'en_US') {
+                for ($t = 0; $t < 10; $t++) {
+                    $localeModel->addAnswer(['text' => $faker->text('100')])->save();
+                }
             }
         }
     }

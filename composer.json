@@ -16,7 +16,7 @@
     "require-dev": {
         "codeception/codeception": "*",
         "fzaninotto/faker": "~1.0",
-        "sokil/php-mongo-migrator": "dev-master",
+        "sokil/php-mongo-migrator": "*",
         "squizlabs/php_codesniffer": "2.*"
     },
     "autoload": {

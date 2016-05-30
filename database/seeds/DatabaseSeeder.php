@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call('LocalesWithAnswers');
         $this->call('Users');
+        $this->call('Answers');
 
         Model::reguard();
     }
